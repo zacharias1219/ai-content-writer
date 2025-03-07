@@ -1,6 +1,10 @@
-// import Image from "next/image";
+import LandingPage from "@/components/LandingPage";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Home() {
+export default async function Home() {
+    const  user  = await currentUser();
+
+    if (!user) return <LandingPage/>;
     return (
         <div className="container">
             Hello
