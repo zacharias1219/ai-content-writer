@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import AuthHeader from "@/components/AuthHeader";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default function SiteLayout({
@@ -9,7 +10,9 @@ export default function SiteLayout({
     return (
       <div className="flex flex-col h-screen min-h-screen bg-gray-50">
 
-        <SignedIn>{/* AuthHeader */}</SignedIn>
+        <SignedIn>
+          <AuthHeader/>
+        </SignedIn>
 
         <SignedOut>
             <Header/>
