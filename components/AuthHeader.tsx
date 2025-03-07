@@ -1,8 +1,11 @@
 import Link from "next/link"
 import { SearchIcon, EditIcon, Loader2Icon } from "lucide-react";
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 
-const AuthHeader = () => {
+const AuthHeader = async () => {
+  const clerkUser = await currentUser();
+  if (!clerkUser) return ;
   return (
     <header className="p-4 flex items-center justify-between text-sm font-medium w-full">
         <div className="flex items-center gap-5">
