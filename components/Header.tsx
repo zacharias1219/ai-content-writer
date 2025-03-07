@@ -14,16 +14,16 @@ export default function Header() {
         </Link>
 
         <div className='flex items-center gap-8'>
-            <Link href='/new-post'>
+            <Link href='/new-post' className='text-muted-foreground hover:text-black'>
                 Write
             </Link>
             <ClerkLoading>
-                <Loader2Icon/>
+                <Loader2Icon className='size-8 animate-spin'/>
             </ClerkLoading>
 
             <ClerkLoaded>
                 <SignInButton/>
-                <Button>
+                <Button asChild className='text-sm px-4 py-3 rounded-full '>
                     <SignUpButton/>
                 </Button>
             </ClerkLoaded>
