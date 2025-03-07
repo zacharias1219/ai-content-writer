@@ -1,4 +1,7 @@
 import React from 'react'
+import { Button } from './ui/button';
+import Image from 'next/image';
+import { auth } from '@clerk/nextjs/server';
 
 const LandingPage = () => {
   return (
@@ -9,8 +12,20 @@ const LandingPage = () => {
                 <br/>
                 Spark Ideas
             </h1>
-            <p></p>
+            <p className='text-xl'>
+                A place for writers to share their stories and ideas with the world.
+            </p>
+            <form action={async () => {
+                "use server";
+                const {redirectToSignIn} = await auth();
+                return redirectToSignIn({returnBackUrl: "/"});
+            }}>
+                <Button type='submit' className='text-lg px-8 py-6 rounded-full bg-green-500 hover:bg-green-500/90 text-white'>
+                    Start Reading
+                </Button>
+            </form>
         </div>
+        <Image src="/assets/home.png" alt="Home" width={1024} height={1024} className='hidden lg:block absolute right-0 object-cover h-[720px] w-auto'/>
     </div>
   )
 }
