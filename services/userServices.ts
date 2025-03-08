@@ -1,5 +1,6 @@
 import {User as TypeUser} from '@clerk/nextjs/server';
 import {connectToDatabase} from '@/lib/mongodb';
+import User from '@/models/User';
 
 export async function saveNewUser(user: TypeUser) {
     await connectToDatabase()
